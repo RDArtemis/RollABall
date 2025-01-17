@@ -5,29 +5,32 @@ public class BallController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("Calling the start method");
+        
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log("Calling the update method");
+        Vector2 inputVector = Vector2.zero; //initiallize vector
+        
         if (Input.GetKey(KeyCode.W))
         {
-            Debug.Log("User's Input: W");
+            inputVector += Vector2.up;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Debug.Log("User's Input: S");
+            inputVector += Vector2.down;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("User's Input: D");
+            inputVector += Vector2.right;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            Debug.Log("User's Input: A");
+            inputVector += Vector2.left;
         }
+
+        Debug.Log("resultant vector = " + inputVector);
     }
 }
