@@ -1,23 +1,20 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-
-public class BallController : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
-    public Rigidbody sphereBody;
 
+    public UnityEvent<Vector2> OnMove = new UnityEvent<Vector2>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 inputVector = Vector2.zero; //initiallize vector2
-        Vector3 inputXZ = new Vector3(inputVector.x, 0, inputVector.y);
-        
+        Vector2 inputVector = Vector2.zero;
         if (Input.GetKey(KeyCode.W))
         {
             inputVector += Vector2.up;
@@ -26,16 +23,15 @@ public class BallController : MonoBehaviour
         {
             inputVector += Vector2.down;
         }
-        if (Input.GetKey(KeyCode.D))
-        {
-            inputVector += Vector2.right;
-        }
         if (Input.GetKey(KeyCode.A))
         {
             inputVector += Vector2.left;
         }
+        if (Input.GetKey(KeyCode.D))
+        {
+            inputVector += Vector2.right;
+        }
 
-        Debug.Log("resultant vector = " + inputVector);
-        Debug.Log("resultant 3Dvector = " + inputXZ);
+        OnMove?.Invoke(inputVector);
     }
 }
