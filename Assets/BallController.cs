@@ -5,8 +5,8 @@ public class BallController : MonoBehaviour
 {
     [SerializeField] private Rigidbody sphereBody;
     [SerializeField] float ballSpeed;
-    [SerializeField] float jumpForce = 5;
-    [SerializeField] float groundCheckDistance = 1f;
+    [SerializeField] float jumpForce;
+    [SerializeField] float groundCheckDistance;
 
 
     private bool isGrounded; //ball on ground?
